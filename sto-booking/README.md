@@ -1,16 +1,82 @@
-# React + Vite
+# 📅 Tutka Tamka – Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Frontend частина веб-додатку для онлайн запису на послуги.
 
-Currently, two official plugins are available:
+Користувач:
+- обирає послугу
+- вибирає дату та час
+- вводить email
+- отримує підтвердження на пошту
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+⚠️ Для повної роботи потрібен запущений backend сервер.
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🚀 Технології
 
-## Expanding the ESLint configuration
+- React
+- Fetch API
+- CSS / Tailwind
+- Vite / Create React App 
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🔌 API
+
+Frontend працює з backend через REST API.
+
+Приклад запитів:
+
+- `GET /api/services` — отримати список послуг
+- `GET /api/slots?serviceId=1` — отримати вільні слоти
+- `POST /api/appointments` — створити запис
+
+Backend повинен бути запущений на:
+http://localhost:5000
+
+
+---
+
+## ⚙️ Встановлення та запуск
+
+### 1️⃣ Клонувати репозиторій
+
+
+git clone https://github.com/username/appointment-frontend.git
+
+cd appointment-frontend
+
+
+### 2️⃣ Встановити залежності
+
+
+npm install
+
+
+### 3️⃣ Запустити проєкт
+
+
+npm run dev
+
+або (якщо CRA)
+
+npm start
+
+---
+
+Додаток буде доступний на:
+
+http://localhost:5173
+
+
+## 📁 Структура
+
+src/
+├── components/
+├── pages/
+├── services/ (API запити)
+├── App.jsx
+└── main.jsx
+
+## 👨‍💻 Автор
+- Frontend: [Mariana Moskalyk]
