@@ -1,0 +1,87 @@
+.hero {
+  position: relative;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+
+  /* Фонове зображення + Градієнт */
+  background:
+    linear-gradient(to top, #f2f1f1 0%, rgba(242, 241, 241, 0) 20%),
+    linear-gradient(90deg, #ffffff 20%, rgba(255, 255, 255, 0) 60%),
+    url("../../assets/img/service.png") no-repeat center right;
+  background-size: cover;
+  padding: 0px 5%;
+}
+
+.hero-content {
+  max-width: 450px;
+}
+
+.hero-content h1 {
+  font-size: 48px;
+  line-height: 1.1;
+  color: #000;
+}
+
+/* Синій колір для виділених слів */
+.hero-content h1 span {
+  color: #0000ff;
+}
+
+.hero-content p {
+  font-size: 16px;
+  color: #333;
+  font-weight: 500;
+  margin: 20px 0;
+}
+
+/* Кнопка */
+.main-btn {
+  background-color: #f5c800;
+  border: none;
+  padding: 15px 45px;
+  border-radius: 30px;
+  font-size: 20px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition:
+    transform 0.2s,
+    background-color 0.2s;
+}
+.main-btn:hover {
+  background-color: #f5c800;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+/*Язичок "НАШІ ПОСЛУГИ"*/
+.scroll-indicator {
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  background-color: #f2f1f1;
+  padding: 15px 50px;
+  border-radius: 20px 20px 0 0;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  color: #444444;
+  font-weight: 800;
+  font-size: 23px;
+  white-space: nowrap;
+  box-shadow: 0 -10px 10px -5px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.arrow-down {
+  font-size: 18px;
+  color: #444444;
+}
+
+.scroll-text {
+  letter-spacing: 1px;
+}

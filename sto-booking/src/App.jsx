@@ -1,10 +1,7 @@
+import Home from "./pages/Home";
+
 function App() {
-  return (
-    <div>
-      <h1>СТО Booking System</h1>
-      <p>Онлайн запис на сервіс</p>
-    </div>
-  );
+  return <Home />;
 }
 
 export default App;
