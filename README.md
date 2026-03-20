@@ -1,51 +1,54 @@
 📅 Tutka Tamka – Frontend
-Frontend частина веб-додатку для онлайн запису на послуги.
+Клієнтська частина системи онлайн-бронювання для СТО. Забезпечує швидкий та інтуїтивний інтерфейс для запису на послуги.
 
-Користувач:
+⚙️Функціонал
+1.Перегляд списку послуг
+2.Вибір дати та часу
+3.Створення бронювання
+4.Валідація форм на клієнті
 
-обирає послугу
-вибирає дату та час
-вводить email
-отримує підтвердження на пошту
-⚠️ Для повної роботи потрібен запущений backend сервер.
-
-🚀 Технології
+🛠 Технології
 React
 Fetch API
-CSS / Tailwind
-Vite / Create React App
-🔌 API
-Frontend працює з backend через REST API.
+CSS
+Vite
 
-Приклад запитів:
+📁 Структура проекту
+src/
+ ├── assets/        # Статичні файли (зображення, іконки)
+ ├── components/    # UI-компоненти
+ ├── pages/         # Сторінки додатку
+ ├── services/      # API-запити
+ ├── App.jsx        # Головний компонент
+ └── main.jsx       # Точка входу
 
-GET /api/services — отримати список послуг
-GET /api/slots?serviceId=1 — отримати вільні слоти
-POST /api/appointments — створити запис
-Backend повинен бути запущений на: http://localhost:5000
+🚀Локальний запуск
+Клонування репозиторію:
+[git clone https://github.com/MarianaMoskalyk/sto-booking-frontend]
+cd sto-booking
 
-⚙️ Встановлення та запуск
-1️⃣ Клонувати репозиторій
-git clone https://github.com/username/appointment-frontend.git
-
-cd appointment-frontend
-
-2️⃣ Встановити залежності
+Встановлення залежностей:
 npm install
 
-3️⃣ Запустити проєкт
+Запуск:
 npm run dev
 
-або (якщо CRA)
+Додаток буде доступний на http://localhost:5173.
 
-npm start
-
-Додаток буде доступний на:
-
-http://localhost:5173
-
-📁 Структура
-src/ ├── components/ ├── pages/ ├── services/ (API запити) ├── App.jsx └── main.jsx
+📡Інтеграція з API
+// Створення бронювання
+const createBooking = async (data) => {
+  const response = await fetch(`${import.meta.env.VITE_API_URL}/appointments`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  });
+  return response.json();
+};
+Метод	Endpoint	Опис
+GET	/api/services	Список послуг
+GET	/api/slots?serviceId=1	Вільні слоти
+POST	/api/appointments	Створення бронювання
 
 👨‍💻 Автор
 Frontend: [Mariana Moskalyk]
