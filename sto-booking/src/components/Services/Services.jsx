@@ -15,7 +15,7 @@ const services = [
 
 function Services() {
   return (
-    <section className="services">
+    <section id="services" className="services">
       <div className="services-grid">
         {services.map((item) => (
           <div key={item.id} className="service-card">
