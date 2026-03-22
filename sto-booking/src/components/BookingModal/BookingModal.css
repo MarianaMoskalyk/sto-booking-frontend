@@ -1,0 +1,187 @@
+/* Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* Modal container */
+.modal-content {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  max-height: 80vh;
+  background: #fff;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  animation: modalFade 0.25s ease;
+}
+
+/* Fade animation */
+@keyframes modalFade {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Close button */
+.modal-close-button {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  font-size: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #999;
+  transition: 0.2s;
+}
+
+.modal-close-button:hover {
+  color: #333;
+}
+
+/* Header */
+.modal-header {
+  margin-bottom: 20px;
+}
+
+.modal-header h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 4px;
+}
+
+.modal-header p {
+  font-size: 13px;
+  color: #666;
+}
+
+/* Calendar container */
+/* Розтягуємо контейнер бібліотеки */
+.calendar-container .react-datepicker {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  font-family: inherit;
+}
+
+/* Розтягуємо внутрішню частину з датами */
+.calendar-container .react-datepicker__month-container {
+  width: 100%;
+}
+
+/* Розтягуємо заголовки та дні тижня */
+.calendar-container .react-datepicker__header {
+  width: 100%;
+  background-color: #fff;
+  border-bottom: 1px solid #f3f4f6;
+  padding: 12px 0;
+}
+
+.calendar-container .react-datepicker__day-names,
+.calendar-container .react-datepicker__week {
+  display: flex;
+  justify-content: space-around; /* Розподіляємо дні рівномірно */
+}
+
+/* Збільшуємо самі клітинки з числами */
+.calendar-container .react-datepicker__day,
+.calendar-container .react-datepicker__day-name {
+  width: 2.5rem; /* Збільште це значення, якщо хочете ще ширше */
+  line-height: 2.5rem;
+  margin: 0.2rem;
+  flex: 1; /* Дозволяє дням розтягуватися */
+}
+
+/* Time slots */
+.time-section h4 {
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: #111;
+}
+
+.time-slots {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.time-chip {
+  padding: 10px 0;
+  border-radius: 12px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  background: #eef2ff;
+  color: #1e3a8a;
+  transition: 0.2s;
+}
+
+.time-chip:hover {
+  background: #dbeafe;
+}
+
+.time-chip.active {
+  background: #2563eb;
+  color: #fff;
+}
+
+/* Input fields */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.input-group input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+}
+
+/* Submit button */
+.submit-btn {
+  width: 100%;
+  padding: 14px;
+  border-radius: 14px;
+  border: none;
+  font-weight: 700;
+  font-size: 15px;
+  background: linear-gradient(90deg, #fbbf24, #f59e0b);
+  color: #111;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.submit-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

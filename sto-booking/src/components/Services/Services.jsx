@@ -1,5 +1,7 @@
+import { useState } from "react";
 import "./Services.css";
-// Імпортуйте свої картинки тут (якщо вони в assets/img)
+import BookingModal from "../BookingModal/BookingModal";
+
 import imgService from "../../assets/img/service.png";
 
 const services = [
@@ -14,6 +16,13 @@ const services = [
 ];
 
 function Services() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedService, setSelectedService] = useState(null);
+
+  const handleOpen = (serviceObj) => {
+    setSelectedService(serviceObj);
+    setIsOpen(true);
+  };
   return (
     <section id="services" className="services">
       <div className="services-grid">
@@ -24,11 +33,20 @@ function Services() {
             </div>
             <div className="card-content">
               <h3>{item.title}</h3>
-              <button className="select-btn">ОБРАТИ</button>
+              <button className="select-btn" onClick={() => handleOpen(item)}>
+                ОБРАТИ
+              </button>
             </div>
           </div>
         ))}
       </div>
+      {/* МОДАЛКА */}
+      {isOpen && (
+        <BookingModal
+          service={selectedService}
+          onClose={() => setIsOpen(false)}
+        />
+      )}
     </section>
   );
 }
