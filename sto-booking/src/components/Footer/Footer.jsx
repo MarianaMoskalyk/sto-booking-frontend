@@ -2,7 +2,7 @@ import "./Footer.css";
 
 const Footer = () => {
   return (
-    <footer className="footer">
+    <footer className="footer" id="footer">
       <div className="footer-container">
         <div className="footer-col brand-col">
           <h2 className="footer-logo">
@@ -18,7 +18,7 @@ const Footer = () => {
           <h3>Навігація</h3>
           <ul className="footer-links">
             <li>
-              <a href="#home">Головна</a>
+              <a href="#hero">Головна</a>
             </li>
             <li>
               <a href="#services">Послуги</a>

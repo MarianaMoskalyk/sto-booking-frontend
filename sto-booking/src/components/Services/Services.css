@@ -1,6 +1,7 @@
 .services {
   padding: 60px 5%;
   background-color: #f2f1f1;
+  font-family: "Montserrat", sans-serif;
 }
 
 .services-title {
@@ -75,7 +76,7 @@
   background-color: #f5c800;
 }
 
-/* Адаптивність для телефонів */
+/* Адаптив */
 @media (max-width: 900px) {
   .services-grid {
     grid-template-columns: repeat(2, 1fr);
