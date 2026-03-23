@@ -76,6 +76,7 @@
 /* Розтягуємо контейнер бібліотеки */
 .calendar-container .react-datepicker {
   width: 100%;
+  height: 250px;
   display: flex;
   flex-direction: column;
   border: 1px solid #e5e7eb;
@@ -91,6 +92,7 @@
 /* Розтягуємо заголовки та дні тижня */
 .calendar-container .react-datepicker__header {
   width: 100%;
+
   background-color: #fff;
   border-bottom: 1px solid #f3f4f6;
   padding: 12px 0;
@@ -158,7 +160,7 @@
 .input-group input {
   width: 100%;
   box-sizing: border-box;
-  padding: 14px;
+  padding: 10px;
   border-radius: 12px;
   border: 1px solid #e5e7eb;
 }
