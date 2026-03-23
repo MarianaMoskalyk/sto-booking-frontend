@@ -11,7 +11,7 @@ function Navbar() {
     <header className="navbar">
       <div className="logo">
         <span>ТУТКА ТАМКА</span>
-        <img src="/logo.svg" alt="Тютка Тамка" />
+        <img src="/logo.svg" alt="Тутка Тамка" />
       </div>
 
       <nav>
