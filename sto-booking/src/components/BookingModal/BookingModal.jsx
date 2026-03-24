@@ -112,9 +112,14 @@ function BookingModal({ service, onClose }) {
               type="tel"
               placeholder="+380 (__) ___-__-__"
               value={formData.phone}
-              onChange={(e) =>
-                setFormData({ ...formData, phone: e.target.value })
-              }
+              onChange={(e) => {
+                // Видаляємо все, що не є цифрами
+                const onlyNums = e.target.value.replace(/\D/g, "");
+                // Обмежуємо довжину (наприклад, 12 символів для формату 380...)
+                if (onlyNums.length <= 12) {
+                  setFormData({ ...formData, phone: onlyNums });
+                }
+              }}
             />
           </div>
 

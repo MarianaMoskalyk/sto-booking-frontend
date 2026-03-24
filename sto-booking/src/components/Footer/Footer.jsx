@@ -34,7 +34,7 @@ const Footer = () => {
           <div className="contact-info">
             <p>📍 м. Тернопіль</p>
             <p>
-              📞 <a href="tel:+380000000000">+380 00 000 00 00</a>
+              📞 <a href="tel:+380000000000">+380 96 704 64 29</a>
             </p>
             <p>
               ✉️ <a href="mailto:TutkaTamka@gmail.com">TutkaTamka@gmail.com</a>
