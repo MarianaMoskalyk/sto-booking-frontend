@@ -18,7 +18,7 @@
   position: relative;
   width: 100%;
   max-width: 500px;
-  max-height: 80vh;
+  max-height: 90vh;
   background: #fff;
   border-radius: 20px;
   padding: 24px;
@@ -71,46 +71,82 @@
   font-size: 13px;
   color: #666;
 }
-
-/* Calendar container */
-/* Розтягуємо контейнер бібліотеки */
+/* КАЛЕНДАР */
+/* Основний контейнер бібліотеки */
 .calendar-container .react-datepicker {
   width: 100%;
-  height: 250px;
+  border: none; /* Прибираємо зовнішню рамку */
+  font-family: inherit;
   display: flex;
   flex-direction: column;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  font-family: inherit;
 }
 
-/* Розтягуємо внутрішню частину з датами */
+/* Прибираємо фон та лінію шапки */
+.calendar-container .react-datepicker__header {
+  width: 100%;
+  background-color: transparent;
+  border-bottom: none;
+  padding: 0;
+}
+
+/* Контейнер місяця */
 .calendar-container .react-datepicker__month-container {
   width: 100%;
 }
 
-/* Розтягуємо заголовки та дні тижня */
-.calendar-container .react-datepicker__header {
-  width: 100%;
-
-  background-color: #fff;
-  border-bottom: 1px solid #f3f4f6;
-  padding: 12px 0;
+/* Назви днів (Пн, Вт...) */
+.calendar-container .react-datepicker__day-names {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
 }
 
-.calendar-container .react-datepicker__day-names,
+.calendar-container .react-datepicker__day-name {
+  flex: 1;
+  margin: 0;
+  color: #9ca3af; /* Світло-сірий */
+  font-weight: 500;
+  font-size: 13px;
+  text-transform: capitalize;
+}
+
+/* Налаштування сітки чисел */
+.calendar-container .react-datepicker__month {
+  margin: 0; /* Прибираємо зовнішні відступи місяця */
+}
+
 .calendar-container .react-datepicker__week {
   display: flex;
-  justify-content: space-around; /* Розподіляємо дні рівномірно */
+  justify-content: space-between;
 }
 
-/* Збільшуємо самі клітинки з числами */
-.calendar-container .react-datepicker__day,
-.calendar-container .react-datepicker__day-name {
-  width: 2.5rem; /* Збільште це значення, якщо хочете ще ширше */
-  line-height: 2.5rem;
-  margin: 0.2rem;
-  flex: 1; /* Дозволяє дням розтягуватися */
+/* Самі числа - робимо їх короткими */
+.calendar-container .react-datepicker__day {
+  flex: 1;
+  margin: 1px 0; /* Мінімальний вертикальний відступ */
+  line-height: 1.8rem; /* Зменшена висота (робить календар коротким) */
+  font-size: 14px;
+  color: #4b5563;
+  border-radius: 8px;
+  transition: 0.2s;
+}
+
+/* Стиль вибраного дня (темно-синій як на макеті) */
+.calendar-container .react-datepicker__day--selected,
+.calendar-container .react-datepicker__day--keyboard-selected {
+  background-color: #3b5998 !important;
+  color: #fff !important;
+  font-weight: 600;
+}
+
+/* Прибираємо підсвічування при фокусі */
+.calendar-container .react-datepicker__day:focus {
+  outline: none;
+}
+
+/* Стиль для днів інших місяців (якщо вони відображаються) */
+.calendar-container .react-datepicker__day--outside-month {
+  color: #e5e7eb;
 }
 
 /* Time slots */
@@ -124,11 +160,11 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
   gap: 8px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .time-chip {
-  padding: 10px 0;
+  padding: 5px 0;
   border-radius: 12px;
   text-align: center;
   font-weight: 600;
