@@ -6,7 +6,10 @@ const Footer = () => {
       <div className="footer-container">
         <div className="footer-col brand-col">
           <h2 className="footer-logo">
-            <img src="/logo.svg" alt="Тутка Тамка" />
+            <img
+              src={`${import.meta.env.BASE_URL}logo.svg`}
+              alt="Тутка Тамка"
+            />
           </h2>
           <p className="slogan">
             Зремонтували тутка — <br />
