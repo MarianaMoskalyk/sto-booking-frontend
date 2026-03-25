@@ -1,4 +1,5 @@
 import "./Navbar.css";
+import logo from "../assets/logo.svg";
 
 function Navbar() {
   const scrollToServices = () => {
@@ -19,7 +20,7 @@ function Navbar() {
     <header className="navbar">
       <div className="logo">
         <span>ТУТКА ТАМКА</span>
-        <img src="/logo.svg" alt="Тутка Тамка" />
+        <img src={logo} alt="Тутка Тамка" />
       </div>
 
       <nav>
