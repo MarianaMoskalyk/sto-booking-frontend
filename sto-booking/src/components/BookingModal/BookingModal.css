@@ -223,3 +223,13 @@
   opacity: 0.5;
   cursor: not-allowed;
 }
+.time-chip.disabled {
+  background: #e5e7eb;
+  color: #9ca3af;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.time-chip.disabled:hover {
+  background: #e5e7eb;
+}
