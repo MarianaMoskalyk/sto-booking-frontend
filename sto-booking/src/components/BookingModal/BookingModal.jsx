@@ -49,7 +49,7 @@ function BookingModal({ service, onClose }) {
         const selectedDate = formData.date.toISOString().split("T")[0];
 
         const response = await fetch(
-          `http://localhost:3030/api/booked-slots?date=${selectedDate}`,
+          `https://nondramatic-absolvable-karter.ngrok-free.dev/api/booked-slots?date=${selectedDate}`,
         );
 
         const bookedSlots = await response.json();
@@ -85,7 +85,7 @@ function BookingModal({ service, onClose }) {
         const selectedDate = formData.date.toISOString().split("T")[0];
 
         const response = await fetch(
-          `http://localhost:3030/api/booked-slots?date=${selectedDate}`,
+          `https://nondramatic-absolvable-karter.ngrok-free.dev/api/booked-slots?date=${selectedDate}`,
         );
 
         const bookedSlots = await response.json();
@@ -132,7 +132,7 @@ function BookingModal({ service, onClose }) {
     };
 
     try {
-      const response = await fetch("http://localhost:3030/api/create-booking", {
+      const response = await fetch("https://nondramatic-absolvable-karter.ngrok-free.dev/api/createOrder", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
