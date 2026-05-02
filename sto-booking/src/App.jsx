@@ -1,20 +1,15 @@
-import { Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import AdminLogin from "./pages/AdminLogin";
+import { Outlet } from "react-router-dom";
+import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
     <>
-      <Routes>
-        <Route path="/" element={
-          <>
-            <Home />
-            <Footer />
-          </>
-        } />
-        <Route path="/admin" element={<AdminLogin />} />
-      </Routes>
+      <Navbar />
+      <main>
+        <Outlet />
+      </main>
+      <Footer />
     </>
   );
 }
