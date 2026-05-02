@@ -1,15 +1,23 @@
-import { Outlet } from "react-router-dom";
-import Navbar from "./components/Navbar/Navbar";
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import AdminLogin from "./pages/AdminLogin";
 import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
     <>
-      <Navbar />
-      <main>
-        <Outlet />
-      </main>
-      <Footer />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <Home />
+              <Footer />
+            </>
+          }
+        />
+        <Route path="/admin" element={<AdminLogin />} />
+      </Routes>
     </>
   );
 }
