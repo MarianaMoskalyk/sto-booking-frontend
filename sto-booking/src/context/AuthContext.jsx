@@ -16,8 +16,8 @@ export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // ПЕРЕМИКАЧ: встановіть false, коли бекенд запрацює
-  const isDevMode = true;
+  // Вимикаємо devMode для роботи з реальною апішкою
+  const isDevMode = false;
 
   useEffect(() => {
     checkAuth();
@@ -27,69 +27,83 @@ export const AuthProvider = ({ children }) => {
     const savedToken = localStorage.getItem("adminToken");
     const savedUser = localStorage.getItem("adminUser");
 
-    if (savedToken && savedUser) {
+    // Якщо токен є, вважаємо користувача авторизованим (базова перевірка)
+    if (savedToken) {
       setToken(savedToken);
-      setUser(JSON.parse(savedUser));
       setIsAuthenticated(true);
+      if (savedUser) {
+        setUser(JSON.parse(savedUser));
+      }
     }
     setLoading(false);
   };
 
-  const login = async (login, password) => {
+  const login = async (loginName, password) => {
     try {
-      // --- РЕЖИМ РОЗРОБКИ (MOCK) ---
+      // 1. ПЕРЕД ЛОГІНОМ ОБОВ'ЯЗКОВО ОЧИЩАЄМО СТАРІ ДАНІ
+      localStorage.removeItem("adminToken");
+      localStorage.removeItem("adminUser");
+
+      // DEV MODE (для локальних тестів)
       if (isDevMode) {
-        console.log("Вхід у режимі розробки...");
-        await new Promise((resolve) => setTimeout(resolve, 500)); // імітація затримки
-
-        // Будь-які дані підійдуть, наприклад: admin / admin
-        if (login === "admin" && password === "admin") {
+        if (loginName === "admin" && password === "admin") {
           const mockData = {
-            token: "fake-jwt-token-for-dev",
-            user: { id: 1, login: "admin", name: "Головний Адмін" },
+            token: "fake-jwt-token",
+            user: { id: 1, name: "Admin" },
           };
-
-          localStorage.setItem("adminToken", mockData.token);
-          localStorage.setItem("adminUser", JSON.stringify(mockData.user));
-
-          setToken(mockData.token);
-          setUser(mockData.user);
-          setIsAuthenticated(true);
-
+          saveAuthData(mockData.token, mockData.user);
           return { success: true };
-        } else {
-          throw new Error("Невірний логін або пароль (режим розробки)");
         }
+        throw new Error("Невірний логін або пароль");
       }
 
-      // --- РЕАЛЬНИЙ ЗАПИТ (Буде проігноровано, якщо isDevMode === true) ---
+      // REAL API
       const response = await fetch(
         "https://nondramatic-absolvable-karter.ngrok-free.dev/api/adminLogin",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "ngrok-skip-browser-warning": "true",
+            // ОБОВ'ЯЗКОВО для ngrok, щоб fetch не отримував html-попередження замість json
+            "ngrok-skip-browser-warning": "69420",
           },
-          body: JSON.stringify({ login, password }),
+          body: JSON.stringify({
+            name: loginName,
+            password: password,
+          }),
         },
       );
 
+      const data = await response.json();
+
+      // 2. ПЕРЕВІРКА СТАТУСУ (якщо статус не 200-299)
       if (!response.ok) {
-        throw new Error("Невірний логін або пароль");
+        // Використовуємо повідомлення з сервера (наприклад, "Користувач відсутній")
+        throw new Error(data.message || "Помилка авторизації");
       }
 
-      const data = await response.json();
-      localStorage.setItem("adminToken", data.token);
-      localStorage.setItem("adminUser", JSON.stringify(data.user));
-      setToken(data.token);
-      setUser(data.user);
-      setIsAuthenticated(true);
+      // 3. ЯКЩО ВСЕ ДОБРЕ - ЗБЕРІГАЄМО
+      const userData = { name: loginName, role: "admin" };
+      saveAuthData(data.token, userData);
 
       return { success: true };
     } catch (error) {
-      return { success: false, error: error.message };
+      console.error("Login error:", error.message);
+      setIsAuthenticated(false);
+      return {
+        success: false,
+        error: error.message,
+      };
     }
+  };
+
+  // Допоміжна функція для збереження даних
+  const saveAuthData = (receivedToken, receivedUser) => {
+    localStorage.setItem("adminToken", receivedToken);
+    localStorage.setItem("adminUser", JSON.stringify(receivedUser));
+    setToken(receivedToken);
+    setUser(receivedUser);
+    setIsAuthenticated(true);
   };
 
   const logout = () => {

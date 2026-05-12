@@ -1,0 +1,372 @@
+/* Основні налаштування */
+:root {
+  --sidebar-bg: #000080; /* Темно-синій як на макеті */
+  --main-bg: #f4f4f9;
+  --text-dark: #333;
+  --white: #ffffff;
+  --accent-blue: #0000ff;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--main-bg);
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  background-color: var(--sidebar-bg);
+  color: white;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+}
+.sidebar .logo span {
+  color: white;
+}
+.sidebar h2 {
+  padding: 0 20px;
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  padding: 15px 25px;
+  transition: 0.3s;
+  border-left: 4px solid transparent;
+}
+
+.sidebar a:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.sidebar a.active {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border-left: 4px solid white;
+}
+
+/* Контентна частина */
+.admin-content {
+  flex: 1;
+  padding: 40px;
+  overflow-y: auto;
+}
+
+.admin-content h1 {
+  margin-top: 0;
+  font-size: 1.8rem;
+  color: var(--text-dark);
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Сітка статистики */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-bottom: 40px;
+}
+
+.stat-card {
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Кольори карток з макету */
+.stat-card:nth-child(1) {
+  background-color: #4da3ff;
+} /* Синя */
+.stat-card:nth-child(2) {
+  background-color: #4ade80;
+} /* Зелена */
+.stat-card:nth-child(3) {
+  background-color: #facc15;
+} /* Жовта */
+.stat-card:nth-child(4) {
+  background-color: #f87171;
+} /* Червона */
+
+.stat-card h3 {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.stat-card p {
+  margin: 5px 0 0;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* Таблиця */
+.table-container {
+  background: var(--white);
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.table-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-table th {
+  text-align: left;
+  padding: 12px;
+  border-bottom: 2px solid #f0f0f0;
+  color: #777;
+  font-size: 0.9rem;
+}
+
+.admin-table td {
+  padding: 15px 12px;
+  border-bottom: 1px solid #f9f9f9;
+  font-size: 0.95rem;
+}
+
+.admin-table tr:last-child td {
+  border-bottom: none;
+}
+.table-container {
+  overflow-x: auto; /* Дозволяє скролити таблицю вбік, якщо вона не влізає */
+  -webkit-overflow-scrolling: touch; /* Плавний скрол на iPhone */
+  margin: 0 10px; /* Відступи від країв екрана */
+}
+
+.admin-table {
+  min-width: 500px; /* Гарантує, що колонки не злипнуться */
+}
+/* Кнопка "Переглянути всі" */
+.view-all-link {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  color: var(--accent-blue);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Пошук та кнопки зверху (як на Адмінка-2/3) */
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  padding: 10px 15px;
+  border-radius: 20px;
+  border: 1px solid #ddd;
+  width: 300px;
+  outline: none;
+}
+
+.action-btn {
+  background-color: var(--accent-blue);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+/* Адаптація для планшетів та мобільних */
+/* Адаптація для планшетів (до 1024px) */
+@media (max-width: 1024px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Мобільні телефони (до 768px) */
+@media (max-width: 768px) {
+  .admin-layout {
+    flex-direction: column;
+  }
+
+  /* Налаштування сайдбару як верхнього меню */
+  .sidebar {
+    width: 100%;
+    min-height: auto;
+    padding: 15px 0 5px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* ПОВЕРТАЄМО ЛОГОТИП */
+  .sidebar .logo {
+    display: flex !important;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    padding: 0;
+  }
+
+  .sidebar h2 {
+    display: none; /* Ховаємо статичний текст "АДМІНКА", лишаємо тільки лого */
+  }
+
+  .sidebar .logo img {
+    width: 35px;
+    margin-right: 10px;
+  }
+
+  /* Навігація в рядок */
+  .sidebar nav {
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-evenly;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 5px;
+  }
+
+  .sidebar a {
+    padding: 10px;
+    font-size: 0.85rem;
+    border-left: none;
+    border-bottom: 3px solid transparent;
+  }
+
+  .sidebar a.active {
+    border-bottom: 3px solid white;
+  }
+
+  /* Контентна частина */
+  .admin-content {
+    padding: 20px 15px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr; /* Картки одна під одною для зручності */
+    gap: 15px;
+  }
+
+  /* Виправлення склеювання пошуку та кнопки */
+  .table-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+    margin-bottom: 25px;
+  }
+
+  .search-input {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .action-btn {
+    width: 100%;
+    padding: 14px;
+  }
+}
+
+/* 1. Анімація для всієї сторінки */
+.admin-content {
+  animation: slideUp 0.6s ease-out;
+}
+
+/* 2. Анімація для карток (з невеликою затримкою) */
+.stat-card {
+  animation: fadeIn 0.8s ease-in-out;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+/* 3. Ефект при наведенні на картку */
+.stat-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* 4. Підсвітка рядків таблиці */
+.admin-table tr {
+  transition: background-color 0.2s ease;
+}
+
+.admin-table tr:hover {
+  background-color: #f8faff;
+  cursor: pointer;
+}
+
+/* Опис самих анімацій */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* Базовий стиль кнопки */
+.action-btn {
+  transition: all 0.2s ease; /* Плавність для всіх змін */
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 255, 0.1);
+}
+
+/* Ефект при наведенні (Hover) */
+.action-btn:hover {
+  background-color: #0000cc; /* Трохи темніший синій */
+  transform: translateY(-2px); /* Легке підняття вгору */
+  box-shadow: 0 6px 12px rgba(0, 0, 255, 0.2);
+}
+
+/* Ефект при натисканні (Active) */
+.action-btn:active {
+  transform: scale(0.96); /* Кнопка злегка вдавлюється */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Анімація для посилань у Sidebar */
+.sidebar a {
+  transition: all 0.3s ease;
+}
+
+.sidebar a:active {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(0.98);
+}
